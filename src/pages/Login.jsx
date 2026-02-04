@@ -1,20 +1,30 @@
 import { useState } from "react";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import {
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+} from "firebase/auth";
 import { auth } from "../firebase";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isSignup, setIsSignup] = useState(false);
   const [error, setError] = useState("");
 
-  const handleLogin = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
 
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      if (isSignup) {
+        // 🔐 SIGN UP
+        await createUserWithEmailAndPassword(auth, email.trim(), password);
+      } else {
+        // 🔐 SIGN IN
+        await signInWithEmailAndPassword(auth, email.trim(), password);
+      }
     } catch (err) {
-      setError("Invalid email or password");
+      setError(err.message);
     }
   };
 
@@ -25,12 +35,14 @@ function Login() {
         <div className="text-center">
           <h1 className="text-2xl font-bold text-white">Expense Tracker</h1>
           <p className="text-sm text-slate-400 mt-1">
-            Track your income & expenses effortlessly
+            {isSignup
+              ? "Create an account to get started"
+              : "Track your income & expenses effortlessly"}
           </p>
         </div>
 
         {/* Form */}
-        <form onSubmit={handleLogin} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="text-sm text-slate-300">Email</label>
             <input
@@ -61,9 +73,36 @@ function Login() {
             type="submit"
             className="w-full py-2 rounded-md bg-blue-600 hover:bg-blue-700 transition text-white font-medium"
           >
-            Login
+            {isSignup ? "Create Account" : "Login"}
           </button>
         </form>
+
+        {/* Toggle */}
+        <p className="text-center text-sm text-slate-400">
+          {isSignup ? (
+            <>
+              Already have an account?{" "}
+              <button
+                type="button"
+                onClick={() => setIsSignup(false)}
+                className="text-blue-400 hover:underline"
+              >
+                Login
+              </button>
+            </>
+          ) : (
+            <>
+              Don’t have an account?{" "}
+              <button
+                type="button"
+                onClick={() => setIsSignup(true)}
+                className="text-blue-400 hover:underline"
+              >
+                Sign up
+              </button>
+            </>
+          )}
+        </p>
 
         {/* Footer */}
         <p className="text-center text-xs text-slate-500">
