@@ -27,21 +27,22 @@ function Dashboard() {
     : transactions;
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white p-6">
       <div className="max-w-6xl mx-auto space-y-6">
         {/* Header */}
-        <div className="flex justify-between items-center bg-white p-5 rounded-xl shadow">
-          <h2 className="text-2xl font-bold">Expense Tracker</h2>
+        <div className="flex justify-between items-center bg-slate-900/80 backdrop-blur border border-slate-700 rounded-2xl p-5 shadow-lg">
+          <h1 className="text-2xl font-bold tracking-tight">Expense Tracker</h1>
+
           <button
             onClick={handleLogout}
-            className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600"
+            className="px-4 py-2 bg-red-500/90 hover:bg-red-600 transition rounded-md text-sm font-medium"
           >
             Logout
           </button>
         </div>
 
         {/* Controls */}
-        <div className="flex flex-col md:flex-row gap-4 bg-white p-4 rounded-xl shadow">
+        <div className="flex flex-col md:flex-row gap-4 bg-slate-900/80 backdrop-blur border border-slate-700 rounded-2xl p-4 shadow">
           <MonthFilter
             selectedMonth={selectedMonth}
             setSelectedMonth={setSelectedMonth}
@@ -55,10 +56,10 @@ function Dashboard() {
           <ExpenseChart transactions={filteredTransactions} />
         </div>
 
-        {/* Form */}
+        {/* Add Transaction */}
         <ExpenseForm />
 
-        {/* List */}
+        {/* Transactions */}
         <ExpenseList setTransactions={setTransactions} />
       </div>
     </div>

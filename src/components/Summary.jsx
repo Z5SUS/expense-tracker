@@ -10,20 +10,20 @@ function Summary({ transactions }) {
   const balance = income - expense;
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-white p-5 rounded-xl shadow">
-      <div className="bg-green-50 p-4 rounded-lg">
-        <p className="text-sm text-gray-500">Income</p>
-        <p className="text-xl font-semibold text-green-600">₹{income}</p>
+    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-slate-900/80 backdrop-blur border border-slate-700 rounded-2xl p-5 shadow">
+      <div className="bg-green-500/10 border border-green-500/30 p-4 rounded-xl">
+        <p className="text-sm text-slate-400">Income</p>
+        <p className="text-xl font-semibold text-green-400">₹{income}</p>
       </div>
 
-      <div className="bg-red-50 p-4 rounded-lg">
-        <p className="text-sm text-gray-500">Expense</p>
-        <p className="text-xl font-semibold text-red-600">₹{expense}</p>
+      <div className="bg-red-500/10 border border-red-500/30 p-4 rounded-xl">
+        <p className="text-sm text-slate-400">Expense</p>
+        <p className="text-xl font-semibold text-red-400">₹{expense}</p>
       </div>
 
-      <div className="bg-blue-50 p-4 rounded-lg">
-        <p className="text-sm text-gray-500">Balance</p>
-        <p className="text-xl font-semibold text-blue-600">₹{balance}</p>
+      <div className="bg-blue-500/10 border border-blue-500/30 p-4 rounded-xl">
+        <p className="text-sm text-slate-400">Balance</p>
+        <p className="text-xl font-semibold text-blue-400">₹{balance}</p>
       </div>
     </div>
   );

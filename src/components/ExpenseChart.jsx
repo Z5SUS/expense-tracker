@@ -23,7 +23,7 @@ function ExpenseChart({ transactions }) {
   };
 
   return (
-    <div className="bg-white p-5 rounded-xl shadow">
+    <div className="bg-slate-900/80 backdrop-blur border border-slate-700 rounded-2xl p-5 shadow">
       <h3 className="text-lg font-semibold mb-3">Income vs Expense</h3>
       <Pie data={data} />
     </div>

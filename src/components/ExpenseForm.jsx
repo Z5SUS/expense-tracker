@@ -20,7 +20,7 @@ function ExpenseForm() {
   };
 
   return (
-    <div className="bg-white p-5 rounded-xl shadow space-y-3">
+    <div className="bg-slate-900/80 backdrop-blur border border-slate-700 rounded-2xl p-5 shadow space-y-4">
       <h3 className="text-lg font-semibold">Add Transaction</h3>
 
       <div className="flex flex-col md:flex-row gap-3">
@@ -29,13 +29,13 @@ function ExpenseForm() {
           placeholder="Amount"
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
-          className="border p-2 rounded-md w-full focus:ring-2 focus:ring-blue-400"
+          className="w-full px-4 py-2 rounded-md bg-slate-800 border border-slate-700 text-white placeholder-slate-500 focus:ring-2 focus:ring-blue-500 outline-none"
         />
 
         <select
           value={type}
           onChange={(e) => setType(e.target.value)}
-          className="border p-2 rounded-md"
+          className="px-4 py-2 rounded-md bg-slate-800 border border-slate-700 text-white"
         >
           <option value="expense">Expense</option>
           <option value="income">Income</option>
@@ -43,7 +43,7 @@ function ExpenseForm() {
 
         <button
           onClick={addTransaction}
-          className="bg-blue-600 text-white px-4 rounded-md hover:bg-blue-700"
+          className="px-5 py-2 bg-blue-600 hover:bg-blue-700 transition rounded-md font-medium"
         >
           Add
         </button>

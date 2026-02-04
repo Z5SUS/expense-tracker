@@ -40,25 +40,26 @@ function ExpenseList({ setTransactions }) {
   }, [setTransactions]);
 
   return (
-    <div className="bg-white p-5 rounded-xl shadow">
+    <div className="bg-slate-900/80 backdrop-blur border border-slate-700 rounded-2xl p-5 shadow">
       <h3 className="text-lg font-semibold mb-3">Transactions</h3>
 
       {transactions.length === 0 && (
-        <p className="text-gray-500">No transactions yet</p>
+        <p className="text-slate-400">No transactions yet</p>
       )}
 
       <ul className="space-y-2">
         {transactions.map((t) => (
           <li
             key={t.id}
-            className="flex justify-between items-center bg-gray-50 p-3 rounded-md"
+            className="flex justify-between items-center bg-slate-800/60 border border-slate-700 p-3 rounded-lg"
           >
             <span className="font-medium">
               {t.type.toUpperCase()} — ₹{t.amount}
             </span>
+
             <button
               onClick={() => deleteTransaction(t.id)}
-              className="text-red-500 hover:text-red-700"
+              className="text-red-400 hover:text-red-500 transition"
             >
               ✕
             </button>

@@ -23,12 +23,24 @@ function ExportCSV({ transactions }) {
   };
 
   return (
-    <button
-      onClick={exportCSV}
-      className="px-4 py-2 bg-gray-800 text-white rounded-md hover:bg-black"
-    >
-      Export CSV
-    </button>
+    <div className="flex items-end">
+      <button
+        onClick={exportCSV}
+        className="
+          h-[42px]
+          px-4
+          rounded-md
+          bg-slate-800
+          border border-slate-600
+          text-white
+          text-sm
+          hover:bg-slate-700
+          transition
+        "
+      >
+        Export CSV
+      </button>
+    </div>
   );
 }
 
